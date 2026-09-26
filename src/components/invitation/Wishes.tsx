@@ -101,13 +101,12 @@ export function Wishes({ weddingId }: { weddingId: string }) {
             <motion.blockquote
               key={wish.id}
               initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
               className="border border-taupe/25 bg-white/60 p-6 text-left shadow-soft"
             >
               <p className="font-display text-lg italic leading-relaxed text-dark-brown">
-                “{wish.message}”
+                "{wish.message}"
               </p>
               <footer className="mt-4 text-xs uppercase tracking-widest2 text-taupe">
                 — {wish.guest_name}
