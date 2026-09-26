@@ -40,10 +40,17 @@ export function Section({
         </>
       )}
 
+      {/*
+        Reveals on mount rather than on scroll-into-view. whileInView relies on
+        IntersectionObserver timing that can misfire on real mobile browsers,
+        where the visible viewport resizes as the address bar collapses while
+        scrolling — that mismatch can permanently strand content at opacity: 0
+        even though it visually "should" have triggered. Animating on mount
+        keeps the same soft entrance feel without depending on that detection.
+      */}
       <motion.div
         initial={{ opacity: 0, y: 18 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`relative z-10 mx-auto px-6 ${className}`}
       >
